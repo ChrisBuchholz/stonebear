@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# add spider dir to pythonpath
+export PYTHONPATH=`cd ../; pwd`:$PYTHONPATH
+
+../bin/stonebear build
+echo ""
+../bin/stonebear push development
+echo ""
+../bin/stonebear push production

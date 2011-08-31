@@ -1,0 +1,8 @@
+MANIFEST
+*.swp
+*.pyc
+.DS_Store
+dist
+tests/build
+tests/development-build
+tests/production-build

@@ -1,0 +1,2 @@
+include bin/stonebear README.rst stonebeard.example.py
+recursive-include stonebear/ *
