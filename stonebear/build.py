@@ -12,7 +12,7 @@ def walk_n_do(dir, filter, do):
         for fl in filter:
             for fn in fnmatch.filter(files, fl):
                 do(root + "/" + fn)
-        # walk_n_remove dirs
+        # walk_n_do dirs
         for dir in dirs:
             walk_n_do(dir, filter, do)
 
