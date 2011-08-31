@@ -8,7 +8,7 @@ from clean import clean
 
 def walk_n_do(dir, filter, do):
     for root, dirs, files in os.walk(dir):
-        # remove matched files
+        # call do on matched files
         for fl in filter:
             for fn in fnmatch.filter(files, fl):
                 do(root + "/" + fn)
