@@ -1,6 +1,7 @@
 stonebear
 =========
 Build and deployment tool for developing websites and web applications
+
 Features, usage and installation instructions can be found on [our website][home]
 
 Documentation
