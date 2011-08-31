@@ -1,0 +1,32 @@
+stonebear(1) -- Build and deployment tool for web-developers
+==============================================================================================
+
+## SYNOPSIS
+
+`stonebear` [-h] [--version] {build,push,clean,deploy} ...
+
+## DESCRIPTION
+
+`stonebear` is a command-line interface tool that makes it easy to setup a build and deployment system for developing websites and web applications.
+
+`stonebear` is written in Python and is free software licensed under the GNU General Public License version 3 or (at your option) any later version.
+
+## OPTIONS
+
+## BUGS
+
+<https://github.com/ChrisBuchholz/stonebear/issues>
+
+## AUTHOR
+
+chrisbuchholz <http://www.chrisbuchholz.me/>
+
+## LICENSE
+
+GNU General Public License version 3 or (at your option) any later version.
+You should have received a copy of the GNU General Public License along with stonebear. If not, see <http://www.gnu.org/licenses/>.
+
+## SEE ALSO
+
+<https://github.com/ChrisBuchholz/stonebear>
+
