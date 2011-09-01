@@ -105,4 +105,4 @@ The `envs` dictionary is a dictionary of the environments you want to be able to
 [stonebear(1)][stonebear]
 [Python dictionaries documentation](http://docs.python.org/tutorial/datastructures.html#dictionaries)
 
-[stonebear]: http://chrisbuchholz.github.com/man/man1/stonebear.1.html "stonebear(1)
+[stonebear]: http://chrisbuchholz.github.com/stonebear/man/man1/stonebear.1.html "stonebear(1)
