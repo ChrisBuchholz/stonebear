@@ -5,7 +5,7 @@
 # directory that stonebear is called from
 #
 # a stonebeard.py config file is a simply python script containing a dictionary
-# config[]
+# config=[]
 #
 # this config requires third-party software:
 #   jpegoptim
