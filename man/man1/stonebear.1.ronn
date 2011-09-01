@@ -14,7 +14,7 @@ stonebear(1) -- Build and deployment tool for developing websites and web applic
 
 `stonebear` is written in Python and is free software licensed under the GNU General Public License version 3 or (at your option) any later version.
 
-To function, `stonebear` needs a [stonebeard.py config file][config] available in the directory which `stonebear` is called from.
+To function, `stonebear` needs a stonebeard.py config file, [stonebear-config(2)][config], available in the directory which `stonebear` is called from.
 
 ## OPTIONS
 
@@ -48,7 +48,6 @@ You should have received a copy of the GNU General Public License along with sto
 
 ## SEE ALSO
 
-[stonebear-config(2)][config] <https://github.com/ChrisBuchholz/stonebear>
+[stonebear-config(2)][config] <http://github.com/ChrisBuchholz/stonebear>
 
-[config]: ../man2/stonebear-config.2.html
-
+[config]: http://chrisbuchholz.github.com/stonebear/man/man2/stonebear-config.2.html "stonebear-config(2)"
