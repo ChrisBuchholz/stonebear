@@ -1,0 +1,108 @@
+stonebear-config(2) -- stonebeard.py config file format for stonebear
+=====================================================================
+
+## SYNOPSIS
+
+This is an example of a stonebeard.py config file for stonebear, that utilies all available options.
+
+This particular example requires the following software to be installed to function:  
+
+* jpegoptim
+* optipng
+* htmlcompressor
+* uglifyjs
+* yuicompressor
+
+It uses this software in the `compilers` section.
+
+    config = {
+        'compilers': [
+            [
+                ['*.jpg', '*.jpeg'],
+                'jpegoptim {file}'
+            ],
+            [
+                ['*.png'],
+                'optipng {file}'
+            ],
+            [
+                ['*.html', '*.htm'],
+                'htmlcompressor -o {file} {file}'
+            ],
+            [
+                ['*.js'],
+                'uglifyjs -o {file} {file}'
+            ],
+            [
+                ['*.css'],
+                'yuicompressor -type css -o {file} {file}'
+            ]
+        ],
+
+        'input_dir':  'src',
+        'output_dir': 'build',
+
+        'ignore': [
+            '*.psd',
+            '.DS_Store',
+            '.*.swp',
+            '*.pyc',
+            'CACHE'
+        ],
+
+        'prebuild': """
+            echo 'command that executes before build process'
+        """,
+
+        'postbuild': """
+            echo 'command that executes after build process'
+        """
+
+        'prepush': """
+            echo 'command that executes before push process'
+        """,
+
+        'postpush': """
+            echo 'command that executes after push process'
+        """
+
+        'preclean': """
+            echo 'command that executes before clean process'
+        """,
+
+        'postclean': """
+            echo 'command that executes after clean process'
+        """
+
+        'envs': {
+            'development': """
+                rsync -az --delete build/ /var/www/
+            """,
+            'production': """
+                rsync -az --delete build/ -e ssh user@host':/var/www/
+            """
+        }
+    }
+
+## DESCRIPTION
+
+The `stonebeard.py` config file is what powers `stonebear`. Without it, `stonebear` will not know what to do.
+
+The config file is a simply Python dictionary that uses a special format, see the example above, which much be followed for `stonebear` to function. But `stonebeard.py` is just a python script, so you can put any [Python code](http://www.python.org/doc/) inside it.
+
+If there is a config option that you do not want to modify, simply do not put it in your config dictionary and it will not be utilised.
+
+`compilers` are a powerful, and endless way to set up actions to perform on specific files. `compilers` is a list which items must also be lists. The first item inside this list must be a list containing the filter to match the files that the command, the second item, should be applied to. This list of filters accepts unix filename patterns to match the filename. The second item is a bash command, or a series of bash commands, that will get applied to each matched files. To get a grip on the list-structure of `compilers`, check out the example config file above.
+
+The `prebuild`, `postbuild`, `prepush`, `postpush`, `preclean`, `postclean` are multiline strings that contains a bash command, or a series of bash commands. These commands will be executed as the name suggests.
+
+The `envs` dictionary is a dictionary of the environments you want to be able to deploy to. The key of the item is the name used to refer to the environment, and the value is a bash command, or a series of bash commands, used to, in one way or another, deploy the `output_dir` to a server or a location, or whatever you wish. One way could be to use rsync as showed in the example above.
+
+
+## SEE ALSO
+
+<http://github.com/ChrisBuchholz/stonebear>
+[stonebear(1)][stonebear]
+[Python dictionaries documentation](http://docs.python.org/tutorial/datastructures.html#dictionaries)
+
+[stonebear]: http://chrisbuchholz.github.com/man/man1/stonebear.1.html "stonebear(1)
