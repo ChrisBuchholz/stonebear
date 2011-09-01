@@ -8,6 +8,7 @@
 echo "generate man pages"
 VERSION=`python -c 'import stonebear; print stonebear.__version__'`
 ronn man/man1/stonebear.1.ronn --style=toc --organization="stonebear ${VERSION}" --manual="stonebear manual"
+ronn man/man2/stonebear-config.2.ronn --style=toc --organization="stonebear ${VERSION}" --manual="stonebear manual"
 
 ### convert README.md to HTML
 echo "convert README.md to HTML; README.html"
