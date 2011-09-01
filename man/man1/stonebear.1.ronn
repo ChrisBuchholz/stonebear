@@ -1,9 +1,12 @@
-stonebear(1) -- Build and deployment tool for web-developers
-==============================================================================================
+stonebear(1) -- Build and deployment tool for developing websites and web applications
+======================================================================================
 
 ## SYNOPSIS
 
-`stonebear` [-h] [--version] {build,push,clean,deploy} ...
+`stonebear build`  
+`stonebear push <environment>`...  
+`stonebear clean`  
+`stonebear deploy <environment>`...  
 
 ## DESCRIPTION
 
@@ -11,15 +14,32 @@ stonebear(1) -- Build and deployment tool for web-developers
 
 `stonebear` is written in Python and is free software licensed under the GNU General Public License version 3 or (at your option) any later version.
 
+To function, `stonebear` needs a [stonebeard.py config file][config] available in the directory which `stonebear` is called from.
+
 ## OPTIONS
+
+stonebear takes one of four arguments to function.
+These options controls what action stonebear will process.
+
+`build`  
+Clean [output_dir] if one already exist, call the prebuild-command if defined in your config file. It will then run the build process, which copies [input_dir] to [output_dir] (excluding files matching your [ignore_list]), run compilers, if any is set in your config file, and then run the postbuild-command if defined in your config file.
+
+`push <environment>`...  
+Run the push-command defined in [environment]. This requires a second argument [environment], which must be a name of one of the environments (envs) set in your config file.
+
+`clean`  
+Clean [output_dir].
+
+`deploy <environment>`...  
+Convenience function that will run the build command and then the push command. This requires a second argument [environment], which must be a name of one of the environments (envs) set in your config file.
 
 ## BUGS
 
-<https://github.com/ChrisBuchholz/stonebear/issues>
+<http://github.com/ChrisBuchholz/stonebear/issues>
 
 ## AUTHOR
 
-chrisbuchholz <http://www.chrisbuchholz.me/>
+chrisbuchholz <http://www.chrisbuchholz.me>
 
 ## LICENSE
 
@@ -28,5 +48,7 @@ You should have received a copy of the GNU General Public License along with sto
 
 ## SEE ALSO
 
-<https://github.com/ChrisBuchholz/stonebear>
+[stonebear-config(2)][config] <https://github.com/ChrisBuchholz/stonebear>
+
+[config]: ../man2/stonebear-config.2.html
 

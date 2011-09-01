@@ -1,13 +1,22 @@
 .\" generated with Ronn/v0.7.3
 .\" http://github.com/rtomayko/ronn/tree/0.7.3
 .
-.TH "STONEBEAR" "1" "August 2011" "stonebear 0.1" "stonebear manual"
+.TH "STONEBEAR" "1" "September 2011" "stonebear 0.1" "stonebear manual"
 .
 .SH "NAME"
-\fBstonebear\fR \- Build and deployment tool for web\-developers
+\fBstonebear\fR \- Build and deployment tool for developing websites and web applications
 .
 .SH "SYNOPSIS"
-\fBstonebear\fR [\-h] [\-\-version] {build,push,clean,deploy} \.\.\.
+\fBstonebear build\fR
+.
+.br
+\fBstonebear push <environment>\fR\.\.\.
+.
+.br
+\fBstonebear clean\fR
+.
+.br
+\fBstonebear deploy <environment>\fR\.\.\.
 .
 .SH "DESCRIPTION"
 \fBstonebear\fR is a command\-line interface tool that makes it easy to setup a build and deployment system for developing websites and web applications\.
@@ -15,16 +24,44 @@
 .P
 \fBstonebear\fR is written in Python and is free software licensed under the GNU General Public License version 3 or (at your option) any later version\.
 .
+.P
+To function, \fBstonebear\fR needs a stonebeard\.py config file \fI\.\./man2/stonebear\-config\.2\.html\fR available in the directory which \fBstonebear\fR is called from\.
+.
 .SH "OPTIONS"
+stonebear takes one of four arguments to function\. These options controls what action stonebear will process\.
+.
+.P
+\fBbuild\fR
+.
+.br
+Clean [output_dir] if one already exist, call the prebuild\-command if defined in your config file\. It will then run the build process, which copies [input_dir] to [output_dir] (excluding files matching your [ignore_list]), run compilers, if any is set in your config file, and then run the postbuild\-command if defined in your config file\.
+.
+.P
+\fBpush <environment>\fR\.\.\.
+.
+.br
+Run the push\-command defined in [environment]\. This requires a second argument [environment], which must be a name of one of the environments (envs) set in your config file\.
+.
+.P
+\fBclean\fR
+.
+.br
+Clean [output_dir]\.
+.
+.P
+\fBdeploy <environment>\fR\.\.\.
+.
+.br
+Convenience function that will run the build command and then the push command\. This requires a second argument [environment], which must be a name of one of the environments (envs) set in your config file\.
 .
 .SH "BUGS"
-\fIhttps://github\.com/ChrisBuchholz/stonebear/issues\fR
+\fIhttp://github\.com/ChrisBuchholz/stonebear/issues\fR
 .
 .SH "AUTHOR"
-chrisbuchholz \fIhttp://www\.chrisbuchholz\.me/\fR
+chrisbuchholz \fIhttp://www\.chrisbuchholz\.me\fR
 .
 .SH "LICENSE"
 GNU General Public License version 3 or (at your option) any later version\. You should have received a copy of the GNU General Public License along with stonebear\. If not, see \fIhttp://www\.gnu\.org/licenses/\fR\.
 .
 .SH "SEE ALSO"
-\fIhttps://github\.com/ChrisBuchholz/stonebear\fR
+stonebear\-config(2) \fI\.\./man2/stonebear\-config\.2\.html\fR \fIhttps://github\.com/ChrisBuchholz/stonebear\fR

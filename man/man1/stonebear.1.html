@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv='content-type' value='text/html;charset=utf8'>
   <meta name='generator' value='Ronn/v0.7.3 (http://github.com/rtomayko/ronn/tree/0.7.3)'>
-  <title>stonebear(1) - Build and deployment tool for web-developers</title>
+  <title>stonebear(1) - Build and deployment tool for developing websites and web applications</title>
   <style type='text/css' media='all'>
   /* style: man */
   body#manpage {margin:0}
@@ -77,12 +77,15 @@
 
   <h2 id="NAME">NAME</h2>
 <p class="man-name">
-  <code>stonebear</code> - <span class="man-whatis">Build and deployment tool for web-developers</span>
+  <code>stonebear</code> - <span class="man-whatis">Build and deployment tool for developing websites and web applications</span>
 </p>
 
 <h2 id="SYNOPSIS">SYNOPSIS</h2>
 
-<p><code>stonebear</code> [-h] [--version] {build,push,clean,deploy} ...</p>
+<p><code>stonebear build</code><br />
+<code>stonebear push &lt;environment></code>...<br />
+<code>stonebear clean</code><br />
+<code>stonebear deploy &lt;environment></code>...</p>
 
 <h2 id="DESCRIPTION">DESCRIPTION</h2>
 
@@ -90,15 +93,32 @@
 
 <p><code>stonebear</code> is written in Python and is free software licensed under the GNU General Public License version 3 or (at your option) any later version.</p>
 
+<p>To function, <code>stonebear</code> needs a <a href="../man2/stonebear-config.2.html">stonebeard.py config file</a> available in the directory which <code>stonebear</code> is called from.</p>
+
 <h2 id="OPTIONS">OPTIONS</h2>
+
+<p>stonebear takes one of four arguments to function.
+These options controls what action stonebear will process.</p>
+
+<p><code>build</code><br />
+Clean [output_dir] if one already exist, call the prebuild-command if defined in your config file. It will then run the build process, which copies [input_dir] to [output_dir] (excluding files matching your [ignore_list]), run compilers, if any is set in your config file, and then run the postbuild-command if defined in your config file.</p>
+
+<p><code>push &lt;environment></code>...<br />
+Run the push-command defined in [environment]. This requires a second argument [environment], which must be a name of one of the environments (envs) set in your config file.</p>
+
+<p><code>clean</code><br />
+Clean [output_dir].</p>
+
+<p><code>deploy &lt;environment></code>...<br />
+Convenience function that will run the build command and then the push command. This requires a second argument [environment], which must be a name of one of the environments (envs) set in your config file.</p>
 
 <h2 id="BUGS">BUGS</h2>
 
-<p><a href="https://github.com/ChrisBuchholz/stonebear/issues" data-bare-link="true">https://github.com/ChrisBuchholz/stonebear/issues</a></p>
+<p><a href="http://github.com/ChrisBuchholz/stonebear/issues" data-bare-link="true">http://github.com/ChrisBuchholz/stonebear/issues</a></p>
 
 <h2 id="AUTHOR">AUTHOR</h2>
 
-<p>chrisbuchholz <a href="http://www.chrisbuchholz.me/" data-bare-link="true">http://www.chrisbuchholz.me/</a></p>
+<p>chrisbuchholz <a href="http://www.chrisbuchholz.me" data-bare-link="true">http://www.chrisbuchholz.me</a></p>
 
 <h2 id="LICENSE">LICENSE</h2>
 
@@ -107,12 +127,12 @@ You should have received a copy of the GNU General Public License along with sto
 
 <h2 id="SEE-ALSO">SEE ALSO</h2>
 
-<p><a href="https://github.com/ChrisBuchholz/stonebear" data-bare-link="true">https://github.com/ChrisBuchholz/stonebear</a></p>
+<p><a href="../man2/stonebear-config.2.html">stonebear-config(2)</a> <a href="https://github.com/ChrisBuchholz/stonebear" data-bare-link="true">https://github.com/ChrisBuchholz/stonebear</a></p>
 
 
   <ol class='man-decor man-foot man foot'>
     <li class='tl'>stonebear 0.1</li>
-    <li class='tc'>August 2011</li>
+    <li class='tc'>September 2011</li>
     <li class='tr'>stonebear(1)</li>
   </ol>
 
