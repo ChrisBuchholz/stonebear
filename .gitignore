@@ -12,7 +12,7 @@ tests/files-n-folders/development-build
 tests/files-n-folders/production-build
 tests/files/index_o.html
 tests/files/script_o.js
-tests/style_o.css
+tests/files/style_o.css
 tests/folders/build
 tests/folders/development-build
 tests/folders/production-build
