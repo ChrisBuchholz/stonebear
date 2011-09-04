@@ -7,6 +7,9 @@ import subprocess
 from clean import clean
 
 def match_files_to_filter(dir, files, filter, do):
+    """
+    pass all files in dir that matches filter to do
+    """
     for fl in filter:
         for fn in fnmatch.filter(files, fl):
             do(dir + '/' + fn)
@@ -18,11 +21,39 @@ def walk_dir_n_do(dir, filter, do):
         for dir in dirs:
             walk_dir_n_do(dir, filter, do)
 
-def build(args, config):
-    """
-    clean and rebuild [output_dir] from [input_dir]
-    """
+def copy_tree(inputdir, outputdir):
+    # remove outputdir if it already exists
+    if os.path.exists(outputdir):
+        try:
+            shutil.rmtree(outputdir)
+        except OSError:
+            raise
+            sys.exit(1)
+    # copy inputdir to outputdir
+    try:
+        shutil.copytree(inputdir, outputdir)
+        return outputdir
+    except OSError:
+        raise
+        sys.exit(1)
 
+def copy_file(inputfile, outputfile):
+    # remove outputfile if it already exists
+    if os.path.exists(outputfile):
+        try:
+            os.remove(outputfile)
+        except OSError:
+            raise
+            sys.exit(1)
+    # copy inputfile to outputfile
+    try:
+        shutil.copyfile(inputfile, outputfile)
+        return outputfile
+    except OSError:
+        raise
+        sys.exit(1)
+
+def build(args, config):
     # run prebuild command
     subprocess.call(config['prebuild'], shell=True)
 
@@ -51,31 +82,22 @@ def build(args, config):
     for i, dir in enumerate(input_dirs):
         the_dir = dir
         if dir != output_dirs[i]:
-            # input_dir to output_dir
-            try:
-                shutil.copytree(dir, output_dirs[i])
-                the_dir = output_dirs[i]
-            except OSError:
-                raise
-                sys.exit(1)
+            copy_tree(dir, output_dirs[i])
+            dir = output_dirs[i]
         # now we need to find all files that has matches on the ignore list and
         # remove those files from output_dir
-        walk_dir_n_do(the_dir, remove_from_output_dirs, lambda f: os.remove(f))
+        walk_dir_n_do(dir, remove_from_output_dirs, lambda f: os.remove(f))
         # compilers
         for compiler in config['compilers']:
-            walk_dir_n_do(the_dir, compiler[0], lambda f:
+            walk_dir_n_do(dir, compiler[0], lambda f:
                           subprocess.call(compiler[1].format(file=f),
                                           shell=True))
 
     # files
     for i, file in enumerate(input_files):
         if file != output_files[i]:
-            try:
-                shutil.copyfile(file, output_files[i])
-                file = output_files[i]
-            except OSError:
-                raise
-                sys.exit(1)
+            copy_file(file, output_files[i])
+            file = output_files[i]
         files.append(file)
 
     # run compilers on rest_files
