@@ -6,15 +6,17 @@ import fnmatch
 import subprocess
 from clean import clean
 
-def walk_n_do(dir, filter, do):
+def match_files_to_filter(dir, files, filter, do):
+    for fl in filter:
+        for fn in fnmatch.filter(files, fl):
+            do(dir + '/' + fn)
+
+def walk_dir_n_do(dir, filter, do):
     for root, dirs, files in os.walk(dir):
-        # call do on matched files
-        for fl in filter:
-            for fn in fnmatch.filter(files, fl):
-                do(root + "/" + fn)
+        match_files_to_filter(root, files, filter, do)
         # walk_n_do dirs
         for dir in dirs:
-            walk_n_do(dir, filter, do)
+            walk_dir_n_do(dir, filter, do)
 
 def build(args, config):
     """
@@ -24,39 +26,63 @@ def build(args, config):
     # run prebuild command
     subprocess.call(config['prebuild'], shell=True)
 
-    # copy input_dir to output_dir and remove config[ignore] files from
-    # output_dir
+    cwd =    os.getcwd() + '/'
+    input =  config['input']
+    output = config['output']
+    remove_from_output_dirs = config['remove_from_output_dirs']
 
-    # set input_dir and output_dir
-    input_dir = os.getcwd() + '/' + config['input_dir']
-    output_dir = os.getcwd() + '/' + config['output_dir']
+    input_files =  []
+    input_dirs =   []
+    output_files = []
+    output_dirs =  []
+    rest_files =   []
+    files =        []
 
-    # remove output_dir first, and then copy output_dir to the path of
-    # input_dir
-    clean(args, config)
-
-    # and then copy input_dir to output_dir
-    try:
-        shutil.copytree(input_dir, output_dir)
-        print "copy input_dir to output_dir"
-    except OSError as exc:
-        if not os.path.isdir(input_dir):
-            print "%s is not a directory" % input_dir
-        elif not os.path.isdir(output_dir):
-            print "%s is not a directory" % output_dir
+    # find files and dirs
+    for c, i in enumerate(input):
+        if os.path.isdir(cwd + i):
+            input_dirs.append(i)
+            output_dirs.append(output[c])
         else:
-            raise
-        sys.exit(1)
+            input_files.append(i)
+            output_files.append(output[c])
 
-    # now we need to find all files that has matches on the ignore list and
-    # remove those files from output_dir
-    walk_n_do(output_dir, config['ignore'], lambda f: os.remove(f))
-    print "remove matched (ignore) files"
+    # directories
+    for i, dir in enumerate(input_dirs):
+        the_dir = dir
+        if dir != output_dirs[i]:
+            # input_dir to output_dir
+            try:
+                shutil.copytree(dir, output_dirs[i])
+                the_dir = output_dirs[i]
+            except OSError:
+                raise
+                sys.exit(1)
+        # now we need to find all files that has matches on the ignore list and
+        # remove those files from output_dir
+        walk_dir_n_do(the_dir, remove_from_output_dirs, lambda f: os.remove(f))
+        # compilers
+        for compiler in config['compilers']:
+            walk_dir_n_do(the_dir, compiler[0], lambda f:
+                          subprocess.call(compiler[1].format(file=f),
+                                          shell=True))
 
-    # compilers
+    # files
+    for i, file in enumerate(input_files):
+        if file != output_files[i]:
+            try:
+                shutil.copyfile(file, output_files[i])
+                file = output_files[i]
+            except OSError:
+                raise
+                sys.exit(1)
+        files.append(file)
+
+    # run compilers on rest_files
     for compiler in config['compilers']:
-        walk_n_do(output_dir, compiler[0], lambda f:
-                       subprocess.call(compiler[1].format(file=f), shell=True))
+        match_files_to_filter(cwd, files, compiler[0], lambda f:
+                              subprocess.call(compiler[1].format(file=f),
+                                              shell=True))
 
     # run postbuild command
     subprocess.call(config['postbuild'], shell=True)

@@ -20,23 +20,23 @@ def main():
     config_filename = 'stonebeard.py'
     config = {
         # compilers
-        'compilers':       [],
-        # directories
-        'input_dir':       'src',
-        'output_dir':      'build',
-        # list of files to _not_ include in output_dir
-        'ignore':          [],
+        'compilers':               [],
+        # files
+        'input':                   [],
+        'output':                  [],
+        # list of files to remove from directories specified in [output]
+        'remove_from_output_dirs': [],
         # pre and post -commands
-        'prebuild':        """""",
-        'postbuild':       """""",
-        'prepush':         """""",
-        'postpush':        """""",
-        'preclean':        """""",
-        'postclean':       """""",
+        'prebuild':                """""",
+        'postbuild':               """""",
+        'prepush':                 """""",
+        'postpush':                """""",
+        'preclean':                """""",
+        'postclean':               """""",
         # dictionary of environments
         # key is the name of the environment
         # value (multi-line string) is the push-command
-        'env':             {}
+        'env':                     {}
     }
 
     # declare arguments

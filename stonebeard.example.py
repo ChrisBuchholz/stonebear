@@ -39,13 +39,13 @@ config = {
         ]
     ],
 
-    # directories
-    'input_dir':  'src',   # default
-    'output_dir': 'build', # default
+    # files (can be dirs also)
+    'input':  ['src'],   # default=[]
+    'output': ['build'], # default=[]
 
-    # list of files to _not include in output_dir
+    # list of files to remove from directories specified in [output]
     # default=[]
-    'ignore': [
+    'remove_from_output_dirs': [
         '*.psd',
         '.DS_Store',
         '.*.swp',
