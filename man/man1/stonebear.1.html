@@ -101,16 +101,16 @@
 These options controls what action stonebear will process.</p>
 
 <p><code>build</code><br />
-Clean [output_dir] if one already exist, call the prebuild-command if defined in your config file. It will then run the build process, which copies [input_dir] to [output_dir] (excluding files matching your [ignore_list]), run compilers, if any is set in your config file, and then run the postbuild-command if defined in your config file.</p>
+Run the clean process, call the prebuild-command if defined in your config file. It will then run the build process, which copies files and folders from [input] to [output] (and in folders, it will exclude files matching your [remove_from_output_dir]), run compilers if any is set in your config file, and then run the postbuild-command if defined in your config file.</p>
 
 <p><code>push &lt;environment></code>...<br />
-Run the push-command defined in [environment]. This requires a second argument [environment], which must be a name of one of the environments (envs) set in your config file.</p>
+Run the push-command defined in [environments]. This command requires a second argument [environment], which must be a name of one of the environments set in your config file.</p>
 
 <p><code>clean</code><br />
-Clean [output_dir].</p>
+Remove all files matching one of the patterns of [remove_from_output_dirs] in any of the directories specified in [output].</p>
 
 <p><code>deploy &lt;environment></code>...<br />
-Convenience function that will run the build command and then the push command. This requires a second argument [environment], which must be a name of one of the environments (envs) set in your config file.</p>
+Convenience function that will run the build command and then the push command. This requires a second argument [environment], which must be a name of one of the environments set in your config file.</p>
 
 <h2 id="BUGS">BUGS</h2>
 

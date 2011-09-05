@@ -117,10 +117,10 @@
         ]
     ],
 
-    'input_dir':  'src',
-    'output_dir': 'build',
+    'input':  'src',
+    'output': 'build',
 
-    'ignore': [
+    'remove_from_output_dirs': [
         '*.psd',
         '.DS_Store',
         '.*.swp',
@@ -152,7 +152,7 @@
         echo 'command that executes after clean process'
     """
 
-    'envs': {
+    'environments': {
         'development': """
             rsync -az --delete build/ /var/www/
         """,
@@ -173,9 +173,9 @@
 
 <p><code>compilers</code> are a powerful, and endless way to set up actions to perform on specific files. <code>compilers</code> is a list which items must also be lists. The first item inside this list must be a list containing the filter to match the files that the command, the second item, should be applied to. This list of filters accepts unix filename patterns to match the filename. The second item is a bash command, or a series of bash commands, that will get applied to each matched files. To get a grip on the list-structure of <code>compilers</code>, check out the example config file above.</p>
 
-<p>The <code>prebuild</code>, <code>postbuild</code>, <code>prepush</code>, <code>postpush</code>, <code>preclean</code>, <code>postclean</code> are multiline strings that contains a bash command, or a series of bash commands. These commands will be executed as the name suggests.</p>
+<p>The <code>prebuild</code>, <code>postbuild</code>, <code>prepush</code>, <code>postpush</code>, <code>preclean</code>, <code>postclean</code> are multiline strings that contains any bash command(s). These commands will be executed as the name suggests.</p>
 
-<p>The <code>envs</code> dictionary is a dictionary of the environments you want to be able to deploy to. The key of the item is the name used to refer to the environment, and the value is a bash command, or a series of bash commands, used to, in one way or another, deploy the <code>output_dir</code> to a server or a location, or whatever you wish. One way could be to use rsync as showed in the example above.</p>
+<p><code>environments</code> is a dictionary where you define the environments which you want to push to (e.g. development and production environment). The key of the item is the name used to refer to the environment(the environment name), and the value is a multiline string containg any bash command(s) that you wish to use to, in one way or another, push your code(preferably the files from [output]) to a server or some other location. As with the <code>pre-*</code> and <code>post-*</code> commands, this can be any bash commands, but intentionally, it would be something like an rsync command that would push the [output] files and/or folders.</p>
 
 <h2 id="SEE-ALSO">SEE ALSO</h2>
 
