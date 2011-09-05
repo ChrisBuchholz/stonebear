@@ -35,7 +35,7 @@ config = {
         rm -rf development-build/ production-build/
     """,
 
-    'envs': {
+    'environments': {
         'development': """
             rsync -azv --delete build/ development-build/
         """,
