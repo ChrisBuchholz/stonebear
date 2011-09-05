@@ -1,12 +1,125 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>stonebear - build and deployment tool for websites and web applications</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf8" />
+        <meta name="description" content="Build and deployment tool for developing websites and web applications" />
+        <meta name="author" content="chrisbuchholz" />
+        <meta name="keywords" content="" />
+        <meta name="copyright" content="chrisbuchholz copyright (c) 2011" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+        <meta name="rating" content="general" />
+
+        <title>stonebear &mdash; build and deployment tool for websites and web applications</title>
+
+        <link rel="home" href="/" />
+
+        <link rel="stylesheet" href="css/_reset.css" type="text/css" />
+        <link rel="stylesheet" href="css/main.css" type="text/css" />
+        <link rel="stylesheet" href="css/prettify.css" type="text/css" />
+        <link rel="stylesheet" href="css/prettify_sons-of-obsidian.css" type="text/css" />
     </head>
     
     <body>
-        <h1>stonebear</h1>
-        <a href="man/man1/stonebear.1.html">stonebear(1)</a><br />
-        <a href="man/man2/stonebear-config.2.html">stonebear-config(2)</a>
+        <!-- github - fork me - ribbon -->
+        <div id="ribbon">
+            <a href="http://github.com/chrisbuchholz/stonebear">
+                <span>Fork me on GitHub</span>
+            </a>
+        </div>
+
+        <div id="wrapper">
+            <header>
+                <h1>
+                    <a href="/">stonebear</a>
+                </h1>
+                <h2>build and deployment tool for developing websites and web applications</h2>
+            </header>
+
+            <section>
+                <h1>What is stonebear?</h1>
+                <p>stonebear is a build and deployment tool targeted for web-developers. It can ease the task of compiling (<span class="italic">minifying</span>, <span class="italic">uglifying</span>, <span class="italic">obfuscation</span>, <span class="italic">reducing</span>, <span class="italic">optimizing</span> ...) all your HTML, CSS and Javascript, your image-files and whatever you would like. stonebear is made in a way that makes it easy to do whatever you would like it to.
+            </section>
+
+            <section>
+                <h1>How do I get it?!</h1>
+                <p class="justify">stonebear is available via the python package manager <a href="http://pypi.python.org/pypi/pip">pip</a>.</p>
+                <pre class="prettyprint lang-sh linenums">$ pip install stonebear</pre>
+            </section>
+
+            <section>
+                <h1>How does it work?</h1>
+                <p class="justify">You tell stonebear what to do by creating a stonebeard.py config file and put it in the directory that you want to use stonebear from
+                <pre class="prettyprint lang-python linenums">config = {
+    'compilers': [
+        [
+            ['*.jpg', '*.jpeg'],
+            'jpegoptim {file}'
+        ],
+        [
+            ['*.png'],
+            'optipng {file}'
+        ],
+        [
+            ['*.html', '*.htm'],
+            'htmlcompressor -o {file} {file}'
+        ],
+        [
+            ['*.js'],
+            'uglifyjs -o {file} {file}'
+        ],
+        [
+            ['*.css'],
+            'yuicompressor -o {file} {file}'
+        ]
+    ],
+
+    'input':  ['src'],
+    'output': ['build'],
+
+    'remove_from_output_dirs': [
+        '*.psd',
+        '.*.swp',
+        '.DS_Store'
+    ],
+
+    'environments': {
+        'development': """
+            rsync -azv --delete build/ /var/www
+        """,
+        'production': """
+            rsync -azv --delete build/ -e ssh user@host:/var/www
+        """
+    }
+}</pre>
+
+                <p class="justify">from there on, you can <span class="italic">build</span>, <span class="italic">push</span> and <span class="italic">clean</span> your code</p>
+                <pre class="prettyprint lang-sh linenums">$ stonebear build
+copy src/ to build/, runs compilers on files and removes unwanted files
+
+$ stonebear push development
+push build/ to development environment
+
+$ stonebear push production
+push build/ to production environment
+
+$ stonebear clean
+remove build/</pre>
+                <p class="justify">or you can do it all at once</p>
+                <pre class="prettyprint lang-sh linenums">$ stonebear deploy</pre>
+            </section>
+
+
+            <section>
+                <div class="btn">
+                    <a href="https://github.com/ChrisBuchholz/stonebear/wiki">Wanna know more? Visit our Wiki!</a>
+                </div>
+            </section>
+        </div>
+        <script type="text/javascript" src="js/prettify.js"></script>
+        <script>
+            ;(function() {
+                prettyPrint();
+            })();
+        </script>
     </body>
 </html>
