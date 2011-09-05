@@ -2,5 +2,6 @@ MANIFEST
 *.swp
 *.pyc
 .DS_Store
+dist
 tests
 stonebear
