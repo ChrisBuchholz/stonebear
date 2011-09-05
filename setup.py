@@ -19,7 +19,10 @@ setup(
         package_data =     {},
         requires =         [],
         scripts =          ['bin/stonebear'],
-        data_files =       [('man/man1', ['man/man1/stonebear.1'])],
+        data_files =       [
+            ('man/man1', ['man/man1/stonebear.1']),
+            ('man/man2', ['man/man2/stonebear-config.2'])
+        ],
         classifiers =      [
             'Environment :: Console',
             'Development Status :: 5 - Production/Stable',
