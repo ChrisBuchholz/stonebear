@@ -1,2 +1,2 @@
-include bin/stonebear README.rst stonebeard.example.py
+include bin/stonebear README.rst stonebeard.example.py man/man1/stonebear.1 man/man2/stonebear-config.2
 recursive-include stonebear/ *
