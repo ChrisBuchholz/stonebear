@@ -39,11 +39,13 @@ config = {
         ]
     ],
 
-    # files (can be dirs also)
+    # files and dirs
+    # this is a relative path to the file or folder
     'input':  ['src'],   # default=[]
     'output': ['build'], # default=[]
 
     # list of files to remove from directories specified in [output]
+    # the string should be the form a unix filename pattern
     # default=[]
     'remove_from_output_dirs': [
         '*.psd',
@@ -86,7 +88,7 @@ config = {
     # dictionary of environments
     # key is the name of the environment
     # value (multi-line string) is the push-command
-    'envs': {
+    'environments': {
         'development': """
             rsync -az --delete build/ /var/www/
         """,
