@@ -26,10 +26,10 @@ setup(
         classifiers =      [
             'Environment :: Console',
             'Development Status :: 5 - Production/Stable',
-            'Intended Audience :: Developers'
+            'Intended Audience :: Developers',
             'License :: OSI Approved :: GNU General Public License (GPL)',
             'Natural Language :: English',
-            'Operating System :: MacOS :: MacOS X'
+            'Operating System :: MacOS :: MacOS X',
             'Operating System :: POSIX',
             'Programming Language :: Python :: 2.7'
         ]
