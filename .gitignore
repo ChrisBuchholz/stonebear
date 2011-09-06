@@ -16,3 +16,5 @@ tests/files/style_o.css
 tests/folders/build
 tests/folders/development-build
 tests/folders/production-build
+css
+scss
