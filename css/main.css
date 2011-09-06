@@ -44,25 +44,27 @@ body {
 
 #ribbon a {
     -webkit-transform:  rotate( 45deg );
+    -moz-transform:     rotate( 45deg );
     -webkit-box-shadow: 0 0 1em #888;
-    display:          block;
-    padding:          0.1em 0;
-    background:       -moz-linear-gradient(
+    -moz-box-shadow:    0 0 1em #888;
+    display:            block;
+    padding:            0.1em 0;
+    background:         -moz-linear-gradient(
         100% 100% 90deg,
-        #9a0000,
-        #a90000 );
-    background:       -webkit-gradient(
+        #181c27,
+        #191d28 );
+    background:         -webkit-gradient(
         linear,
         left bottom,
         left top,
         from( #181c27 ),
-        to( #191d28u ) );
-    background-color: #181c27;
-    position:         relative;
-    right:            -2.6em;
-    top:              2.5em;
-    text-decoration:  none;
-    border:           0;
+        to( #191d28 ) );
+    background-color:   #181c27;
+    position:           relative;
+    right:              -2.6em;
+    top:                2.5em;
+    text-decoration:    none;
+    border:             0;
 }
 
 #ribbon a span {
@@ -90,7 +92,7 @@ section {
 header h1,
 header h2 {
     font-family: 'IM Fell Great Primer SC', serif;
-    font-size: 4.5em;
+    font-size:   4.5em;
 }
 
 header h1 {
@@ -102,13 +104,13 @@ header h1 a:link,
 header h1 a:visited,
 header h1 a:hover
 header h1 a:active {
-    display: block;
-    color: #333;
+    display:         block;
+    color:           #333;
     text-decoration: none;
 }
 
 header h2 {
-    font-size: 1.8em;
+    font-size:   1.8em;
     line-height: 90%;
 }
 
@@ -126,22 +128,20 @@ section:last-of-type {
 }
 
 section > h1 {
-    font: 1.6em georgia;
+    font:          1.6em georgia;
     margin-bottom: 20px;
 }
 
 pre.prettyprint {
-    font: 0.8em Monaco;
-    margin-top: 10px;
-    margin-right: -10px;
+    font:          0.8em Monaco;
+    margin-top:    10px;
+    margin-right:  -10px;
     padding-right: 10px;
 }
 
 pre.prettyprint:not(:last-of-type) {
     margin-bottom: 20px;
 }
-
-
 
 @media print {
   /* html5 boilerplate --- */
