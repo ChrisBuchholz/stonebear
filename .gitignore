@@ -4,12 +4,12 @@ MANIFEST
 .DS_Store
 dist
 tests/files-n-folders/build
-tests/files-n-folders/m.psd
 tests/files-n-folders/index_o.html
 tests/files-n-folders/script_o.js
 tests/files-n-folders/style_o.css
 tests/files-n-folders/development-build
 tests/files-n-folders/production-build
+tests/files-n-folders/p
 tests/files/index_o.html
 tests/files/script_o.js
 tests/files/style_o.css
