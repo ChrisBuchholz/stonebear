@@ -22,8 +22,10 @@ config = {
         ]
     ],
 
-    'input':  ['src', 'src/m.psd', 'index.html', 'script.js', 'style.css'],
-    'output': ['build', 'p/s/d/m.psd', 'index_o.html', 'script_o.js', 'style_o.css'],
+    'input':  ['src', 'src/m.psd', 'src/o.psd', 'index.html', 'script.js',
+               'style.css'],
+    'output': ['build', 'p/s/d/m.psd', 'p/s/d/o.psd', 'index_o.html',
+               'script_o.js', 'style_o.css'],
 
     'remove_from_output_dirs': [
         '*.psd',

@@ -43,7 +43,7 @@ def enable_dir_nesting(dir_str):
             except OSError:
                 raise
                 sys.exit(1)
-            path = n_path
+        path = n_path
 
 def copy_tree(inputdir, outputdir):
     """
