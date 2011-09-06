@@ -23,7 +23,7 @@ config = {
     ],
 
     'input':  ['src', 'src/m.psd', 'index.html', 'script.js', 'style.css'],
-    'output': ['build', 'm.psd', 'index_o.html', 'script_o.js', 'style_o.css'],
+    'output': ['build', 'psd/m.psd', 'index_o.html', 'script_o.js', 'style_o.css'],
 
     'remove_from_output_dirs': [
         '*.psd',
@@ -32,7 +32,7 @@ config = {
     ],
 
     'postclean': """
-        rm -rf development-build/ production-build/
+        rm -rf development-build/ production-build/ psd/
     """,
 
     'environments': {
