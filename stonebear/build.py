@@ -21,7 +21,30 @@ def walk_dir_n_do(dir, filter, do):
         for dir in dirs:
             walk_dir_n_do(dir, filter, do)
 
+def create_preceding_dirs(dir_str):
+    """
+    parse dir_str to see if it represents a dir or file, or a tree
+    if it represents a tree, it will make sure that any preceding directories
+    exists for the final distination of dir_str
+    """
+    tree = []
+    cwd = os.getcwd() + '/'
+
+    for t in dir_str.split('/'):
+        if t:
+            tree.append(t)
+
+    del tree[-1]
+
+    for t in tree:
+        if not os.path.exists(cwd + t):
+            os.mkdir(cwd + t)
+
 def copy_tree(inputdir, outputdir):
+    """
+    wrapper function for shutil.copytree that enables overwrite of output
+    directory
+    """
     # remove outputdir if it already exists
     if os.path.exists(outputdir):
         try:
@@ -38,6 +61,9 @@ def copy_tree(inputdir, outputdir):
         sys.exit(1)
 
 def copy_file(inputfile, outputfile):
+    """
+    wrapper function for shutil.copyfile that enables overwrite of output file
+    """
     # remove outputfile if it already exists
     if os.path.exists(outputfile):
         try:
@@ -54,6 +80,13 @@ def copy_file(inputfile, outputfile):
         sys.exit(1)
 
 def build(args, config):
+    """
+    build process
+    will run [prebuild] commands, copy [input] to [output], remove files matching
+    [remove_from_output_dirs] from directories in [output], run compilers on
+    matching files in [output] and then run [postbuild] commands
+    dirs in [output]
+    """
     # run prebuild command
     subprocess.call(config['prebuild'], shell=True)
 
