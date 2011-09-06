@@ -21,11 +21,10 @@ def walk_dir_n_do(dir, filter, do):
         for dir in dirs:
             walk_dir_n_do(dir, filter, do)
 
-def create_preceding_dirs(dir_str):
+def enable_dir_nesting(dir_str):
     """
-    parse dir_str to see if it represents a dir or file, or a tree
-    if it represents a tree, it will make sure that any preceding directories
-    exists for the final distination of dir_str
+    check if [dir_str] represents a nested directory or file, and if so, create
+    the nested directories
     """
     tree = []
     cwd = os.getcwd() + '/'
@@ -38,13 +37,20 @@ def create_preceding_dirs(dir_str):
 
     for t in tree:
         if not os.path.exists(cwd + t):
-            os.mkdir(cwd + t)
+            try:
+                os.mkdir(cwd + t)
+            except OSError:
+                raise
+                sys.exit(1)
 
 def copy_tree(inputdir, outputdir):
     """
     wrapper function for shutil.copytree that enables overwrite of output
     directory
     """
+    # make sure that if the [outputdir] is nested in some folders or something,
+    # that they'll get created at first
+    enable_dir_nesting(outputdir)
     # remove outputdir if it already exists
     if os.path.exists(outputdir):
         try:
@@ -64,6 +70,9 @@ def copy_file(inputfile, outputfile):
     """
     wrapper function for shutil.copyfile that enables overwrite of output file
     """
+    # make sure that if the [outputfile] is nested in some folders or
+    # something, that they'll get created at first
+    enable_dir_nesting(outputfile)
     # remove outputfile if it already exists
     if os.path.exists(outputfile):
         try:
