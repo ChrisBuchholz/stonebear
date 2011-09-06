@@ -3,10 +3,9 @@
 import subprocess
 
 def push(args, config):
-    """
+    '''
     actual function to run the environment command
-    """
-
+    '''
     envs = config['environments']
     env = args.env[0]
 

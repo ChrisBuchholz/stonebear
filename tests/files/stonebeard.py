@@ -14,6 +14,6 @@ config = {
         ]
     ],
 
-    'input':  ['index.html', 'script.js', 'style.css'],
+    'input': ['index.html', 'script.js', 'style.css'],
     'output': ['index_o.html', 'script_o.js', 'style_o.css']
 }

@@ -22,8 +22,8 @@ config = {
         ]
     ],
 
-    'input':  ['src', 'src/m.psd', 'src/o.psd', 'index.html', 'script.js',
-               'style.css'],
+    'input': ['src', 'src/m.psd', 'src/o.psd', 'index.html', 'script.js',
+              'style.css'],
     'output': ['build', 'p/s/d/m.psd', 'p/s/d/o.psd', 'index_o.html',
                'script_o.js', 'style_o.css'],
 
@@ -33,16 +33,16 @@ config = {
         '.DS_Store'
     ],
 
-    'postclean': """
+    'postclean': '''
         rm -rf development-build/ production-build/ p/
-    """,
+    ''',
 
     'environments': {
-        'development': """
+        'development': '''
             rsync -azv --delete build/ development-build/
-        """,
-        'production': """
+        ''',
+        'production': '''
             rsync -azv --delete build/ production-build/
-        """
+        '''
     }
 }

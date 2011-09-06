@@ -5,10 +5,9 @@ import shutil
 import subprocess
 
 def clean(args, config):
-    """
+    '''
     clean [output_dir]
-    """
-
+    '''
     # run preclean command
     subprocess.call(config['preclean'], shell=True)
 

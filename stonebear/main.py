@@ -12,31 +12,31 @@ from clean import clean
 from deploy import deploy
 
 def main():
-    """
-    Main interface function of webdeploy
-    """
+    '''
+    Main interface function of stonebear
+    '''
 
     # default configuration
     config_filename = 'stonebeard.py'
     config = {
         # compilers
-        'compilers':               [],
+        'compilers': [],
         # files
-        'input':                   [],
-        'output':                  [],
+        'input': [],
+        'output': [],
         # list of files to remove from directories specified in [output]
         'remove_from_output_dirs': [],
         # pre and post -commands
-        'prebuild':                """""",
-        'postbuild':               """""",
-        'prepush':                 """""",
-        'postpush':                """""",
-        'preclean':                """""",
-        'postclean':               """""",
+        'prebuild': '''''',
+        'postbuild': '''''',
+        'prepush': '''''',
+        'postpush': '''''',
+        'preclean': '''''',
+        'postclean': '''''',
         # dictionary of environments
         # key is the name of the environment
         # value (multi-line string) is the push-command
-        'env':                     {}
+        'env': {}
     }
 
     # declare arguments
@@ -82,7 +82,7 @@ def main():
         user_config = imp.load_source('stonebeard.config', config_path)
         user_config = user_config.config
     except IOError:
-        print "no config file %s found" % config_path
+        print 'no config file %s found' % config_path
         sys.exit(1)
 
     # merge default config with user config
@@ -93,5 +93,5 @@ def main():
 
     sys.exit(0)
 
-if __name__ in ("__main__", "stonebear.main"):
+if __name__ in ('__main__', 'stonebear.main'):
     main()

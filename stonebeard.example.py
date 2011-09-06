@@ -41,7 +41,7 @@ config = {
 
     # files and dirs
     # this is a relative path to the file or folder
-    'input':  ['src'],   # default=[]
+    'input': ['src'],   # default=[]
     'output': ['build'], # default=[]
 
     # list of files to remove from directories specified in [output]
@@ -55,45 +55,45 @@ config = {
         'CACHE'
     ],
 
-    # commands to run pre-build; default=""""""
-    'prebuild': """
+    # commands to run pre-build; default=''''''
+    'prebuild': '''
         echo 'command that executes before build process'
-    """,
+    ''',
 
-    # commands to run post-build; default=""""""
-    'postbuild': """
+    # commands to run post-build; default=''''''
+    'postbuild': '''
         echo 'command that executes after build process'
-    """
+    ''',
 
-    # commands to run pre-push; default=""""""
-    'prepush': """
+    # commands to run pre-push; default=''''''
+    'prepush': '''
         echo 'command that executes before push process'
-    """,
+    ''',
 
-    # commands to run post-push; default=""""""
-    'postpush': """
+    # commands to run post-push; default=''''''
+    'postpush': '''
         echo 'command that executes after push process'
-    """
+    '''
 
-    # commands to run pre-clean; default=""""""
-    'preclean': """
+    # commands to run pre-clean; default=''''''
+    'preclean': '''
         echo 'command that executes before clean process'
-    """,
+    ''',
 
-    # commands to run post-clean; default=""""""
-    'postclean': """
+    # commands to run post-clean; default=''''''
+    'postclean': '''
         echo 'command that executes after clean process'
-    """
+    '''
 
     # dictionary of environments
     # key is the name of the environment
     # value (multi-line string) is the push-command
     'environments': {
-        'development': """
+        'development': '''
             rsync -az --delete build/ /var/www/
-        """,
-        'production': """
+        ''',
+        'production': '''
             rsync -az --delete build/ -e ssh user@host':/var/www/
-        """
+        '''
     }
 }

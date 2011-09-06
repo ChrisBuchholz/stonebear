@@ -22,7 +22,7 @@ config = {
         ]
     ],
 
-    'input':  ['src'],
+    'input': ['src'],
     'output': ['build'],
 
     'remove_from_output_dirs': [
@@ -31,16 +31,16 @@ config = {
         '.DS_Store'
     ],
 
-    'postclean': """
+    'postclean': '''
         rm -rf development-build/ production-build/
-    """,
+    ''',
 
     'environments': {
-        'development': """
+        'development': '''
             rsync -azv --delete build/ development-build/
-        """,
-        'production': """
+        ''',
+        'production': '''
             rsync -azv --delete build/ production-build/
-        """
+        '''
     }
 }
