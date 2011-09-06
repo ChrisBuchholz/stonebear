@@ -27,7 +27,7 @@ def enable_dir_nesting(dir_str):
     the nested directories
     """
     tree = []
-    cwd = os.getcwd() + '/'
+    path = os.getcwd() + '/'
 
     for t in dir_str.split('/'):
         if t:
@@ -36,12 +36,13 @@ def enable_dir_nesting(dir_str):
     del tree[-1]
 
     for t in tree:
-        if not os.path.exists(cwd + t):
+        if not os.path.exists(path + t):
             try:
-                os.mkdir(cwd + t)
+                os.mkdir(path + t)
             except OSError:
                 raise
                 sys.exit(1)
+            path += t
 
 def copy_tree(inputdir, outputdir):
     """
