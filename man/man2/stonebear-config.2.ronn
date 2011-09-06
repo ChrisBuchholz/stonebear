@@ -3,7 +3,7 @@ stonebear-config(2) -- stonebeard.py config file format for stonebear
 
 ## SYNOPSIS
 
-This is an example of a stonebeard.py config file for stonebear, that utilies all available options.
+This is an example of a stonebeard.py config file for stonebear, that utilises all available options.
 
 This particular example requires the following software to be installed to function:  
 
