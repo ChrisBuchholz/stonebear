@@ -128,14 +128,14 @@ def build(args, config):
         if dir != output_dirs[i]:
             copy_tree(dir, output_dirs[i])
             dir = output_dirs[i]
-        # now we need to find all files that has matches on the ignore list and
-        # remove those files from output_dir
-        walk_dir_n_do(dir, remove_from_output_dirs, lambda f: os.remove(f))
         # compilers
         for compiler in config['compilers']:
             walk_dir_n_do(dir, compiler[0], lambda f:
                           subprocess.call(compiler[1].format(file=f),
                                           shell=True))
+        # now we need to find all files that has matches on the ignore list and
+        # remove those files from output_dir
+        walk_dir_n_do(dir, remove_from_output_dirs, lambda f: os.remove(f))
 
     # files
     for i, file in enumerate(input_files):
