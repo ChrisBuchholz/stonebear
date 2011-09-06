@@ -18,3 +18,4 @@ tests/folders/development-build
 tests/folders/production-build
 css
 scss
+.sass-cache
