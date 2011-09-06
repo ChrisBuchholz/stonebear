@@ -1,0 +1,159 @@
+@import "_reset";
+@import "_goodies";
+@import url(http://fonts.googleapis.com/css?family=IM+Fell+Great+Primer+SC);
+
+@font-face {
+    /* This declaration targets Internet Explorer */
+    font-family: 'CollegiateRegular';
+    src:         url('collegiate-webfont.eot');
+}
+
+@font-face {
+    /* This declaration targets everything else */
+    font-family: 'CollegiateRegular';
+    src:         url(//:) format('no404'), url('collegiate-webfont.woff') format('woff'), url('collegiate-webfont.ttf') format('truetype'), url('collegiate-webfont.svg#webfontVAiyPnfQ') format('svg');
+    font-weight: normal;
+    font-style:  normal;
+}
+
+html, body {
+    @include font-smoothing( antialiased );
+}
+
+body {
+    background-color: #fff;
+    color:            #333;
+    font:             104%/1.8 "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+    .block {
+        display: block;
+    }
+
+    .justify {
+        text-align: justify;
+    }
+
+    .italic {
+        font-style: italic;
+    }
+
+    #ribbon {
+        display:  block;
+        overflow: hidden;
+        position: absolute;
+        top:      0;
+        right:    0;
+        height:   11em;
+        z-index:  999;
+
+        & a {
+            @include transform( rotate( 45deg ) );
+            @include box-shadow( 0, 0, 1em, #888 );
+            display:            block;
+            padding:            0.1em 0;
+            background:         -moz-linear-gradient(
+                100% 100% 90deg,
+                #181c27,
+                #191d28 );
+            background:         -webkit-gradient(
+                linear,
+                left bottom,
+                left top,
+                from( #181c27 ),
+                to( #191d28 ) );
+            background-color:   #181c27;
+            position:           relative;
+            right:              -2.6em;
+            top:                2.5em;
+            text-decoration:    none;
+            border:             0;
+
+            & span {
+                color:          #fff;
+                font:           0.95em 'CollegiateRegular', sans-serif;
+                text-align:     center;
+                letter-spacing: -0.1px;
+                display:        block;
+                padding:        0.2em 3em;
+                border:         1px solid #62646b;
+    } } }
+
+    #wrapper {
+        width: 830px;
+    }
+
+    header,
+    section {
+        padding-left:   50px;
+        padding-right:  10px;
+        padding-bottom: 30px;
+        padding-top:    40px;
+    }
+
+    header {
+        & h1,
+        & h2 {
+            font-family: 'IM Fell Great Primer SC', serif;
+            font-size:   4.5em;
+        }
+
+        & h1 {
+            line-height: 90%;
+
+            & a,
+            & a:link,
+            & a:visited,
+            & a:hover
+            & a:active {
+                display:         block;
+                color:           #333;
+                text-decoration: none;
+        } }
+
+        & h2 {
+            font-size:   1.8em;
+            line-height: 90%;
+    } }
+
+    section {
+        border-top:    1px solid #b2b2b2;
+        border-bottom: 1px solid #f5f5f5;
+
+        &:first-of-type {
+            border-top: 0;
+        }
+
+        &:last-of-type {
+            border-bottom: 0;
+        }
+
+        & > h1 {
+            font:          1.6em georgia;
+            margin-bottom: 20px;
+    } }
+
+    pre {
+        &.prettyprint {
+            font:          0.8em Monaco;
+            margin-top:    10px;
+            margin-right:  -10px;
+            padding-right: 10px;
+
+            &:not(:last-of-type) {
+                margin-bottom: 20px;
+} } } }
+
+@media print {
+  /* html5 boilerplate --- */
+  * { background: transparent !important; color: #444 !important; text-shadow: none !important; }
+  a, a:visited { color: #444 !important; text-decoration: underline; }
+  a:after { content: " (" attr(href) ")"; } 
+  abbr:after { content: " (" attr(title) ")"; }
+  .ir a:after { content: ""; }  
+  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+  thead { display: table-header-group; }  
+  tr, img { page-break-inside: avoid; }
+  @page { margin: 0.5cm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3{ page-break-after: avoid; }
+}

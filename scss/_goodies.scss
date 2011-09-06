@@ -1,0 +1,110 @@
+@mixin flex-box ( $orient ) {
+    display:            -moz-box;
+    display:            -webkit-box;
+    display:            -o-box;
+    display:            box;
+    -moz-box-orient:    $orient;
+    -webkit-box-orient: $orient;
+    -o-box-orient:      $orient;
+    box-orient:         $orient;
+}
+
+@mixin flex-child ( $hm ) {
+    -moz-box-flex:    $hm;
+    -webkit-box-flex: $hm;
+    -o-box-flex:      $hm;
+    box-flex:         $hm;
+}
+
+@mixin flex-pack ( $where ) {
+    -moz-box-pack:    $where;
+    -webkit-box-pack: $where;
+    -o-box-pack:      $where;
+    box-pack:         $where;
+}
+
+@mixin flex-align ( $where ) {
+    -moz-box-align:    $where;
+    -webkit-box-align: $where;
+    -o-box-align:      $where;
+    box-align:         $where;
+}
+
+@mixin flex-direction ( $which ) {
+    -moz-box-direction:    $which;
+    -webkit-box-direction: $which;
+    -o-box-direction:      $which;
+    box-direction:         $which;
+}
+
+@mixin border-radius ( $topleft, $topright, $bottomleft, $bottomright ) {
+    -moz-border-radius-topleft:         $topleft;
+    -moz-border-radius-topright:        $topright;
+    -moz-border-radius-bottomleft:      $bottomleft;
+    -moz-border-radius-bottomright:     $bottomright;
+    -webkit-border-top-left-radius:     $topleft;
+    -webkit-border-top-right-radius:    $topright;
+    -webkit-border-bottom-left-radius:  $bottomleft;
+    -webkit-border-bottom-right-radius: $bottomright;
+    -o-border-top-left-radius:          $topleft;
+    -o-border-top-right-radius:         $topright;
+    -o-border-bottom-left-radius:       $bottomleft;
+    -o-border-bottom-right-radius:      $bottomright;
+    border-top-left-radius:             $topleft;
+    border-top-right-radius:            $topright;
+    border-bottom-left-radius:          $bottomleft;
+    border-bottom-right-radius:         $bottomright;
+}
+
+@mixin box-shadow ( $x: 0, $y: 0, $blur: 1px, $color: #000 ) {
+    -moz-box-shadow:    $x $y $blur $color;
+    -webkit-box-shadow: $x $y $blur $color;
+    -o-box-shadow:      $x $y $blur $color;
+    box-shadow:         $x $y $blur $color;
+}
+
+@mixin transition ( $str ) {
+    -moz-transition:    $str;
+    -webkit-transition: $str;
+    -o-transition:      $str;
+    transition:         $str;
+}
+
+@mixin transform ( $transform, $style: flat ) {
+    -moz-transform:          $transform;
+    -webkit-transform:       $transform;
+    -o-transform:            $transform;
+    transition:              $transform;
+    -moz-transform-style:    $style;
+    -webkit-transform-style: $style;
+    -o-transform-style:      $style;
+    transform-style:         $style;
+}
+
+@mixin animation ( $str ) {
+    -moz-animation:    $str;
+    -webkit-animation: $str;
+    -o-animation:      $str;
+    animation:         $str;
+}
+
+@mixin backface-visibility ( $str ) {
+    -moz-backface-visibility:    $str;
+    -webkit-backface-visibility: $str;
+    -o-backface-visibility:      $str;
+    backface-visibility:         $str;
+}
+
+@mixin perspective ( $int ) {
+    -moz-perspective:    $int;
+    -webkit-perspective: $int;
+    -o-perspective:      $int;
+    perspective:         $int;
+}
+
+@mixin font-smoothing ( $str ) {
+    -moz-font-smoothing:    $str;
+    -webkit-font-smoothing: $str;
+    -o-font-smoothing:      $str;
+    font-smoothing:         $str;
+}

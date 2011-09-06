@@ -5,3 +5,4 @@ MANIFEST
 dist
 tests
 stonebear
+.sass-cache
