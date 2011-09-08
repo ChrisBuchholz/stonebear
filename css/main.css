@@ -70,7 +70,7 @@ html, body {
 body {
   background-color: #fff;
   color: #333;
-  font: 104%/1.8 "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  font: 104%/1.8 georgia, serif; }
   body .block {
     display: block; }
   body .justify {
@@ -145,7 +145,7 @@ body {
     body section:last-of-type {
       border-bottom: 0; }
     body section > h1 {
-      font: 1.6em georgia;
+      font-size: 1.6em;
       margin-bottom: 20px; }
   body pre.prettyprint {
     font: 0.8em Monaco;

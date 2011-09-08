@@ -24,7 +24,7 @@ html, body {
 body {
     background-color: #fff;
     color:            #333;
-    font:             104%/1.8 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font:             104%/1.8 georgia, serif;
 
     .block {
         display: block;
@@ -129,7 +129,7 @@ body {
         }
 
         & > h1 {
-            font:          1.6em georgia;
+            font-size:     1.6em;
             margin-bottom: 20px;
     } }
 
