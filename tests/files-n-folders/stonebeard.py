@@ -22,10 +22,10 @@ config = {
         ]
     ],
 
-    'input': ['src', 'src/m.psd', 'src/o.psd', 'index.html', 'script.js',
+    'input': ['src', 'src/m.psd', 'src/o.psd', 'index.html', 'jquery-1.7.2.js',
               'style.css'],
-    'output': ['build', 'p/s/d/m.psd', 'p/s/d/o.psd', 'index_o.html',
-               'script_o.js', 'style_o.css'],
+    'output': ['build', 'p/s/d/m.psd', 'p/s/d/o.psd', 'index_0.html',
+               'jquery-1.7.2_o.js', 'style.css'],
 
     'remove_from_output_dirs': [
         '*.psd',
